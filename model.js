@@ -36,6 +36,7 @@ const model = {
             id: 1,
             image: '',
             name: 'Shungite',
+            price: 50000,
             // Rarity is 0-4
             rarity: 4,
             description: 'The rock of legend'
