@@ -14,19 +14,7 @@ const model = {
     images: {
         shungite: 'shungite.gif'
     },
-    users: [
-        {
-            id: 1,
-            /*
-             * "avatar" will contain either an image key or a base64 string 
-             * with image data depending on what implementation we go with
-             */ 
-            avatar: '',
-            username: 'Bozsi',
-            password: '123abc',
-            balance: 500
-        }
-    ],
+    users: [],
     // Key is user ID, array values is item ID
     inventories: {
         1: [ 1, 1, 1 ]
@@ -70,5 +58,6 @@ const model = {
             passwordAgain: '',
             addBalance: ''
         }
-    }
+    },
+    persist: ['users', 'inventories']
 };
