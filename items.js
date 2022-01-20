@@ -11,6 +11,7 @@ function createItem(name, rarity, description, price){
     });
 }
 
+//start on edit id
 function editId(id){
 }
 
@@ -22,7 +23,9 @@ function findId(id){
 function findIdIndex(id){
     return model.items.findIndex(item => item.id === id);
 }
+//end of edit id
 
+//start of edit image
 function editImage(id){
 }
 
@@ -34,7 +37,9 @@ function findImage(id){
 function findImageIndex(id){
     return model.items.findIndex(item => item.image === id);
 }
+//end of edit image
 
+//start of edit name
 function editName(id){
 }
 
@@ -46,7 +51,9 @@ function findName(id){
 function findNameIndex(id){
     return model.items.findIndex(item => item.name === id);
 }
+//end of edit name
 
+//start of edit description
 function editDescription(id){
 }
 
@@ -58,7 +65,9 @@ function findDescription(id){
 function findDescriptionIndex(id){
     return model.items.findIndex(item => item.description === id);
 }
+//end of edit description
 
+//start of edit price
 function editPrice(id){
 }
 
@@ -70,10 +79,12 @@ function findPrice(id){
 function findPriceIndex(id){
     return model.items.findIndex(item => item.price === id);
 }
+//end of edit price
 
 //edit things from 2nd function
 
 function deleteItem(id){
+
 }
 
 function findItem(id){
