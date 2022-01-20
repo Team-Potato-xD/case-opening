@@ -12,6 +12,7 @@ function createItem(name, rarity, description, price){
 }
 
 function editId(id){
+    
 }
 
 function findId(id){
@@ -40,6 +41,7 @@ function editDescription(id){
 
 function findDescription(id){
     const result = model.items.filter(item => item.description === id);
+    return result.length > 0 ? result[0] : null;
 }
 
 function editPrice(id){
@@ -47,6 +49,7 @@ function editPrice(id){
 
 function findPrice(id){
     const result = model.items.filter(item => item.price === id);
+    return result.length > 0 ? result[0] : null;
 }
 
 //edit things from 2nd function
