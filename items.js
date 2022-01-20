@@ -11,20 +11,6 @@ function createItem(name, rarity, description, price){
     });
 }
 
-//start on edit id
-function editId(id){
-}
-
-function findId(id){
-    const result = model.items.filter(item => item.id === id);
-    return result.length > 0 ? result[0] : null;
-}
-
-function findIdIndex(id){
-    return model.items.findIndex(item => item.id === id);
-}
-//end of edit id
-
 //start of edit image
 function editImage(id){
 }
@@ -84,7 +70,7 @@ function findPriceIndex(id){
 //edit things from 2nd function
 
 function deleteItem(id){
-
+    
 }
 
 function findItem(id){
