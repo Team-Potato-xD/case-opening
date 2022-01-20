@@ -11,19 +11,40 @@ function createItem(name, rarity, description, price){
     });
 }
 
-function editId(){
+function editId(id){
 }
 
-function editImage(){
+function findId(id){
+    const result = model.items.filter(item => item.id === id);
+    return result.length > 0 ? result[0] : null;
 }
 
-function editName(){
+function editImage(id){
 }
 
-function editDescription(){
+function findImage(id){
+    const result = model.items.filter(item => item.image === id);
 }
 
-function editPrice(){
+function editName(id){
+}
+
+function findName(id){
+    const result = model.items.filter(item => item.name === id);
+}
+
+function editDescription(id){
+}
+
+function findDescription(id){
+    const result = model.items.filter(item => item.description === id);
+}
+
+function editPrice(id){
+}
+
+function findPrice(id){
+    const result = model.items.filter(item => item.price === id);
 }
 
 //edit things from 2nd function
