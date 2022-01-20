@@ -24,6 +24,7 @@ function editImage(id){
 
 function findImage(id){
     const result = model.items.filter(item => item.image === id);
+    return result.length > 0 ? result[0] : null;
 }
 
 function editName(id){
@@ -31,6 +32,7 @@ function editName(id){
 
 function findName(id){
     const result = model.items.filter(item => item.name === id);
+    return result.length > 0 ? result[0] : null;
 }
 
 function editDescription(id){
