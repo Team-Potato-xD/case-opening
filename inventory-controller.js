@@ -11,5 +11,6 @@ function sellInventoryItem(id, index) {
 }
 // Add price of items together to measure total value of inventory
 function estimateValueInventory() {
-    const sum = model.inventories[id].reduce(index)
+    const sum = model.inventories[id].reduce(index);
+    console.log(sum);
 }
