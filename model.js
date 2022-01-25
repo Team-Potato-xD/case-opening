@@ -14,7 +14,16 @@ const model = {
     images: {
         shungite: 'shungite.gif'
     },
-    users: [],
+    // This is just a prototype, so passwords aren't confidential
+    users: [
+        {
+            id: 1,
+            avatar: '',
+            username: 'Bozsi',
+            password: '123abc',
+            balance: 0
+        }
+    ],
     // Key is user ID, array values is item ID
     inventories: {
         1: [ 1, 1, 1 ]
@@ -24,6 +33,7 @@ const model = {
             id: 1,
             image: '',
             name: 'Shungite',
+            price: 50000,
             // Rarity is 0-4
             rarity: 4,
             description: 'The rock of legend'
@@ -58,6 +68,5 @@ const model = {
             passwordAgain: '',
             addBalance: ''
         }
-    },
-    persist: ['users', 'inventories']
+    }
 };

@@ -1,37 +1,5 @@
-// Use with "new" keyword
-function IncrementableIndex(name) {
-    lastIndex = localStorage.getItem(`_index_${name}`) || 0;
-    this.next = () => {
-        lastIndex++;
-        localStorage.setItem(`_index_${name}`, lastIndex);
-        return lastIndex;
-    };
-}
-
-// Perstinence of data
-function loadData() {
-    model.persist.forEach(key => {
-        model[key] = JSON.parse(localStorage.getItem(`_data_${key}`));
-    });
-}
-
-loadData();
-
-function saveData() {
-    model.persist.forEach(key => {
-        localStorage.setItem(`_data_${key}`, JSON.stringify(model[key]));
-    });
-}
-
 // Temporary id creator
-const userId = new IncrementableIndex('user');
-
-// Loosely search username
-function isUsernameTaken(username) {
-    return model.users.filter(user => {
-        return user.username.localeCompare(username, undefined, {sensitivity: 'base'}) === 0;
-    }).length > 0;
-}
+const userId = new IncrementableIndex();
 
 /*
  * Functions to find user object or their index
@@ -61,32 +29,21 @@ function findUserIndexByUsername(username) {
 
 function createUser(username, password) {
     // Exit if username is taken
-    if (isUsernameTaken(username)) return false;
+    if (findUserById(username) !== null) return false;
     // Get a new ID
     const id = userId.next();
     // Push new user to model
     model.users.push({
-        id,
+        id: id,
         avatar: '',
-        username,
-        password,
+        username: username,
+        password: password,
         balance: 0
     });
     // Set new inventory
     model.inventories[id] = [];
     // Done, return true
     return true;
-}
-
-function uploadAvatar(id, element) {
-    if (!element || element.files.length < 1) return false;
-    const index = findUserIndexById(id);
-    if (index === -1) return false;
-    const reader = new FileReader();
-    reader.readAsDataURL(element.files[0]);
-    reader.addEventListener('load', () => {
-        model.users[index].avatar = reader.result;
-    });
 }
 
 function changeUsername(id, username) {
@@ -101,6 +58,12 @@ function changePassword(id, password) {
     if (index === -1) return false;
     model.users[index].password = password;
     return true;
+}
+
+function getBalance(id) {
+    const user = findUserById(id);
+    if (!user) return -1;
+    return user.balance;
 }
 
 function addBalance(id, amount) {
