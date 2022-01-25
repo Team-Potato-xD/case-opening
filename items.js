@@ -16,7 +16,12 @@ function deleteItem(id){
 }
 
 function findItem(id){
-    let findItemById = items.find(item => item.id === id);
+    const result = model.items.filter(item => item.id === id);
+    return result.length > 0 ? result[0] : null;
+}
+
+function findItemIndex(id){
+    return model.items.findIndex(item => item.id === id);
 }
 
 // //start of edit image
