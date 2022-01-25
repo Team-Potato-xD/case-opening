@@ -12,7 +12,7 @@ function createItem(name, rarity, description, price){
 }
 
 function deleteItem(id){
-    
+    model.items.splice(id);
 }
 
 function findItem(id){
