@@ -13,6 +13,7 @@ function createItem(name, rarity, description, price){
 
 //start of edit image
 function editImage(id){
+    
 }
 
 function findImage(id){
@@ -70,7 +71,6 @@ function findPriceIndex(id){
 //edit things from 2nd function
 
 function deleteItem(id){
-    
 }
 
 function findItem(id){
