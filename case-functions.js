@@ -12,6 +12,16 @@ function createCase(name, description, price, drops) {
     });
 }
 
-function addItemToCase(caseId, itemId) {
+function findCase(id) {
+    const result = model.cases.filter(cases => cases.id === id);
+    return result.length > 0 ? result[0] : null;
+}
+
+function findCaseIndex(id) {
+    return model.cases.findIndex(cases => cases.id === id);
+}
+
+function editCase(caseId, itemId) {
 
 };
+
