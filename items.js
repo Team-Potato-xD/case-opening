@@ -12,7 +12,8 @@ function createItem(name, rarity, description, price){
 }
 
 function deleteItem(id){
-    model.items.splice(id);
+    let i = findItemIndex(id);
+    model.items.splice(i, 1);
 }
 
 function findItem(id){
