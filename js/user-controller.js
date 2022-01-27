@@ -164,7 +164,7 @@ function getAvatar(index = 0, size = 128, selectable = false) {
         class="avatar${selectable && isSignedIn() && getCurrentUser().avatar === index ? ' current' : ''}${selectable ? ' selectable' : ''}" 
         style="--size: ${size}px" data-index="${index}" data-name="${avatar.name}"
         ${selectable ? ` onclick="changeAvatar(${index});"` : ''}>
-    <img src="avatars/${avatar.file}" alt="${avatar.name}">
+    <img src="${model.avatarPath}/${avatar.file}" alt="${avatar.name}">
     <figcaption>${avatar.name}</figcaption>
     <div>${selectable ? '' : 'Change<br>Avatar'}</div>
     </figure>`;

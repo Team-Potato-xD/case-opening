@@ -15,6 +15,7 @@ const model = {
         shungite: 'shungite.gif'
     },
     // Avatars, use index in user
+    avatarPath: 'assets/avatars',
     avatars: [
         {
             name: 'Default',
