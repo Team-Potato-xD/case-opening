@@ -2,7 +2,7 @@ const model = {
     app: {
         page: 'home',
         // If userId is a falsey value (0, null, etc), we're signed out
-        userId: 1,
+        userId: 2,
         /*
          * This only applies if "page" key is set to "inventory"
          * Tells us what inventory we're looking at and what page number
@@ -14,17 +14,96 @@ const model = {
     images: {
         shungite: 'shungite.gif'
     },
+    // Avatars, use index in user
+    avatars: [
+        {
+            name: 'Default',
+            file: 'avatar.png'
+        },
+        {
+            name: 'Sniper Dude',
+            file: 'guns.jpg'
+        },
+        {
+            name: 'Piggy',
+            file: 'piggy.png'
+        },
+        {
+            name: 'Bone Face',
+            file: 'skelly.jpg'
+        },
+        {
+            name: 'Masked Spider',
+            file: 'spidey.jpg'
+        },
+        {
+            name: 'Iron Man',
+            file: 'iron-man.jpg'
+        },
+        {
+            name: 'The Hulk',
+            file: 'hulk.png'
+        },
+        {
+            name: 'Thanos',
+            file: 'thanos.png'
+        },
+        {
+            name: 'Sackboy',
+            file: 'sackboy.jpg'
+        },
+        {
+            name: 'Gon',
+            file: 'gon.png'
+        },
+        {
+            name: 'Killua',
+            file: 'killua.jpg'
+        },
+        {
+            name: 'Supreme Kakashi',
+            file: 'kakashi.jpg'
+        },
+        {
+            name: 'Luffy',
+            file: 'luffy.png'
+        },
+        {
+            name: 'Nami',
+            file: 'nami.jpg'
+        },
+        {
+            name: 'Yoshino',
+            file: 'girl.jpg'
+        },
+        {
+            name: 'Yumeko',
+            file: 'girl2.jpg'
+        },
+        {
+            name: 'Emo Raphiel',
+            file: 'girl3.png'
+        },
+        {
+            name: 'Reina',
+            file: 'girl4.png'
+        }
+    ],
+    // This is just a prototype, so passwords aren't confidential
     users: [
         {
             id: 1,
-            /*
-             * "avatar" will contain either an image key or a base64 string 
-             * with image data depending on what implementation we go with
-             */ 
-            avatar: '',
+            avatar: 0,
             username: 'Bozsi',
             password: '123abc',
-            balance: 500
+            balance: 0
+        },
+        {
+            id: 2,
+            avatar: 15,
+            username: 'Invoku',
+            password: '123abc',
+            balance: 10000
         }
     ],
     // Key is user ID, array values is item ID
