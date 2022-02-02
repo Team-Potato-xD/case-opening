@@ -1,26 +1,28 @@
-function createCase(name, description, price, drops) {
+// ID iterator
+model.iterators.chests = createIncrementableIndex(model.chests.length);
+
+function createChest(name, description, price, drops) {
     model.cases.push({
-        id: 1,
+        id: model.iterators.chests.next(),
         image: '',
         name: name,
         description: description,
         price: price,
         drops: drops,
-
+        items: []
     });
 }
 
-function findCase(id) {
+function findChest(id) {
     const result = model.cases.filter(cases => cases.id === id);
     return result.length > 0 ? result[0] : null;
 }
 
-function findCaseIndex(id) {
+function findChestIndex(id) {
     return model.cases.findIndex(cases => cases.id === id);
 }
 
-/*function editCase(caseId, itemId) {
-
-};
-
-*/
+function addChestItem(chestId, itemId) {
+    const chest = findChest(chestId);
+    chest.push(itemId);
+}

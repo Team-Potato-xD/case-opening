@@ -1,5 +1,5 @@
-// Temporary id creator
-const userId = createIncrementableIndex(model.users.length);
+// ID iterator
+model.iterators.users = createIncrementableIndex(model.users.length);
 
 /*
  * Functions to find user object or their index
@@ -53,7 +53,7 @@ function createUser(username, password) {
         return false;
     }
     // Get a new ID
-    const id = userId.next();
+    const id = model.iterators.users.next();
     // Make sure index doesn't exist to avoid dupes
     if (findUserIndexById(id) !== -1) {
         console.error('ID is already in use!');

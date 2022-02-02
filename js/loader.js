@@ -6,6 +6,8 @@ const files = [
     'js/utility.js',
     'js/model.js',
     'js/controller/user.js',
+    'js/controller/item.js',
+    'js/controller/chest.js',
     'js/controller/inventory.js',
     'js/view/helpers.js',
     'js/view/general.js',
