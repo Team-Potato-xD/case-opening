@@ -1,5 +1,5 @@
 // Temporary id creator
-const userId = createIncrementableIndex(2);
+const userId = createIncrementableIndex(model.users.length);
 
 /*
  * Functions to find user object or their index
@@ -37,6 +37,16 @@ function getCurrentUser() {
  */
 
 function createUser(username, password) {
+    // Username has to be longer than 1 character
+    if (username.length < 2) {
+        console.error('Username has to be 2 characters or longer!');
+        return false;
+    }
+    // Password has to be longer than 5 characters
+    if (password.length < 6) {
+        console.error('Password has to be 6 characters or longer!');
+        return false;
+    }
     // Exit if username is taken
     if (findUserByUsername(username) !== null) {
         console.error('Username is already in use!');
@@ -119,6 +129,15 @@ function signUp(username, password, passwordAgain) {
     return createUser(username, password);
 }
 
+// Simplifies the process in the view itself
+function doSignUp() {
+    if (!signUp(model.inputs.signUp.username, model.inputs.signUp.password, model.inputs.signUp.passwordAgain)) return;
+    model.inputs.signUp.username = '';
+    model.inputs.signUp.password = '';
+    model.inputs.signUp.passwordAgain = '';
+    goTo('signIn');
+}
+
 function signIn(username, password) {
     if (isSignedIn()) {
         console.error('You are already signed in!');
@@ -129,12 +148,21 @@ function signIn(username, password) {
         console.error('User does not exist!');
         return false;
     } else if (user.password !== password) {
-        console.error('Passwords does not match!');
+        console.error('Password is wrong!');
         return false;
     }
     model.app.userId = user.id;
+    model.inputs.settings.username = user.username;
     console.info(`You signed in as "${user.username}".`);
     return true;
+}
+
+// Simplifies the process in the view itself
+function doSignIn() {
+    if (!signIn(model.inputs.signIn.username, model.inputs.signIn.password)) return;
+    model.inputs.signIn.username = '';
+    model.inputs.signIn.password = '';
+    goTo('home');
 }
 
 function signOut() {
@@ -143,6 +171,7 @@ function signOut() {
         return false;
     }
     model.app.userId = 0;
+    model.inputs.settings.username = '';
     console.info('You have been signed out.');
     return true;
 }
@@ -164,7 +193,7 @@ function getAvatar(index = 0, size = 128, selectable = false) {
         class="avatar${selectable && isSignedIn() && getCurrentUser().avatar === index ? ' current' : ''}${selectable ? ' selectable' : ''}" 
         style="--size: ${size}px" data-index="${index}" data-name="${avatar.name}"
         ${selectable ? ` onclick="changeAvatar(${index});"` : ''}>
-    <img src="avatars/${avatar.file}" alt="${avatar.name}">
+    <img src="${model.avatarPath}/${avatar.file}" alt="${avatar.name}">
     <figcaption>${avatar.name}</figcaption>
     <div>${selectable ? '' : 'Change<br>Avatar'}</div>
     </figure>`;
@@ -177,7 +206,8 @@ function changeAvatar(index) {
     }
     getCurrentUser().avatar = index;
     console.info(`You changed avatar to "${model.avatars[index].name}".`);
-    document.getElementById('avatars').innerHTML = getAvatars(128, true);
+    // TEMP
+    render();
     return true;
 }
 

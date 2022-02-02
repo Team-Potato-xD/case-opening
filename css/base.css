@@ -1,0 +1,193 @@
+:root {
+  --gray-light2: #4a4c51;
+  --gray-light1: #424549;
+  --gray: #36393e;
+  --gray-dark1: #2e3136;
+  --gray-dark2: #282b30;
+  --gray-dark3: #1e2124;
+  --red: #f04747;
+  --green: #43b581;
+  --blue: #7289da;
+  --orange: #faa61a;
+  --deep-orange: #f26522;
+  --light-gray: #99aab5;
+}
+
+/* Colors */
+.red {
+  background-color: var(--red);
+}
+
+.green {
+  background-color: var(--green);
+}
+
+.blue {
+  background-color: var(--blue);
+}
+
+/* Some reset and layouts */
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: white;
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--gray);
+  user-select: none;
+}
+
+main {
+  --nav-height: 3.5rem;
+  min-height: 100vh;
+  display: grid;
+  grid-template: var(--nav-height) 1fr auto / 1fr;
+  grid-gap: 15px;
+}
+
+main.center-layout > section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+main.split-layout section {
+  display: grid;
+  grid-template: 1fr / 3fr 2fr;
+  grid-gap: 15px;
+}
+
+main.inventory-layout > section {
+  display: grid;
+  grid-template: 200px 1fr / 200px 3fr 2fr;
+  grid-gap: 15px;
+}
+
+main.inventory-layout > section section {
+  grid-column: span 2;
+}
+
+.center-self {
+  justify-self: center;
+  align-self: center;
+}
+
+/* Hide elements on different sizes */
+.hide {
+  display: none;
+}
+
+@media only screen and (max-width: 600px) {
+  .hide-s,
+  .hide-s-m {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 601px) and (max-width: 992px) {
+  .hide-s-m,
+  .hide-m,
+  .hide-m-l {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 993px) {
+  .hide-m-l,
+  .hide-l {
+    display: none;
+  }
+}
+
+/* Responsive container */
+.container {
+  margin: 0 auto;
+  max-width: 1280px;
+  width: 90%;
+}
+
+@media only screen and (min-width: 601px) {
+  .container {
+    width: 85%;
+  }
+}
+
+@media only screen and (min-width: 993px) {
+  .container {
+    width: 70%;
+  }
+}
+
+/* Navigation */
+
+header {
+  background-color: var(--gray-dark3);
+}
+
+header > .container {
+  height: 100%;
+  padding: 0;
+  display: grid;
+  grid-template: 1fr / auto 1fr;
+  align-items: center;
+  justify-content: center;
+  grid-gap: 2rem;
+}
+
+header h2 {
+  margin: 0;
+}
+
+header nav {
+  display: grid;
+  grid-template: 1fr / 1fr auto;
+}
+
+header nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+header nav li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.no-gap {
+  gap: 0;
+}
+
+/* Panels */
+
+.panel {
+  border-radius: 5px;
+  background-color: var(--gray-light2);
+  padding: 10px;
+}
+
+.vertical-view {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Footer */
+
+footer {
+  background-color: var(--gray-dark3);
+  color: var(--light-gray);
+  text-align: center;
+  font-size: 0.8rem;
+  padding: 5px 0;
+}
