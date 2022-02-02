@@ -1,5 +1,3 @@
-
-
 function createCase(name, description, price, drops) {
     model.cases.push({
         id: 1,
