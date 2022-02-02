@@ -21,7 +21,8 @@ function findCaseIndex(id) {
     return model.cases.findIndex(cases => cases.id === id);
 }
 
-function editCase(caseId, itemId) {
+/*function editCase(caseId, itemId) {
 
 };
 
+*/
