@@ -1,0 +1,88 @@
+:root {
+  --border-radius: 5px;
+  --border-width: 1px;
+  --button-color: var(--blue);
+  --separator-color: var(--light-gray);
+  --shadow-color: var(--gray-dark2);
+}
+
+/* Common styling */
+
+textarea,
+input[type="text"],
+input[type="password"],
+button,
+.btn {
+  padding: 10px 20px;
+  margin: 0;
+  border: none;
+  border-radius: var(--border-radius);
+}
+
+/* Form inputs */
+
+input[type="text"],
+input[type="password"] {
+  opacity: 0.9;
+  background-color: var(--light-gray);
+  color: white;
+  transition: background-color 0.3s, color 0.3s, opacity 0.3s;
+  outline: none;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+  opacity: 1;
+  background-color: white;
+  color: black;
+}
+
+input[type="text"]::placeholder,
+input[type="password"]::placeholder {
+  color: white;
+  transition: color 0.3s;
+}
+
+input[type="text"]:focus::placeholder,
+input[type="password"]:focus::placeholder {
+  color: var(--light-gray);
+}
+
+/* Form buttons */
+
+button,
+.btn {
+  opacity: 0.9;
+  color: inherit;
+  background-color: var(--button-color);
+  cursor: pointer;
+  transition: box-shadow 0.1s, opacity 0.3s;
+}
+
+button:hover,
+.btn:hover {
+  opacity: 1;
+}
+
+button:active,
+.btn:active {
+  box-shadow: inset 0 0 3px var(--shadow-color);
+}
+
+/* Form utilities */
+
+.half-left {
+  border-radius: var(--border-radius) 0 0 var(--border-radius) !important;
+}
+
+.half-right {
+  border-radius: 0 var(--border-radius) var(--border-radius) 0 !important;
+}
+
+.separator-left {
+  border-left: var(--border-width) solid var(--separator-color) !important;
+}
+
+.separator-right {
+  border-right: var(--border-width) solid var(--separator-color) !important;
+}

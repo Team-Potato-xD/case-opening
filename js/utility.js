@@ -1,9 +1,9 @@
 /*
  * An object with method for incrementing index
  */
-function createIncrementableIndex(start = 1) {
+function createIncrementableIndex(lastIndex = 0) {
     return {
-        lastIndex: start - 1,
+        lastIndex: lastIndex,
         next: function() {
             return ++this.lastIndex;
         }

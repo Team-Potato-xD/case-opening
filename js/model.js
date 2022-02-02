@@ -1,8 +1,10 @@
 const model = {
+    name: 'Chest Site',
+    shortName: 'CS',
     app: {
         page: 'home',
         // If userId is a falsey value (0, null, etc), we're signed out
-        userId: 2,
+        userId: 0,
         /*
          * This only applies if "page" key is set to "inventory"
          * Tells us what inventory we're looking at and what page number
@@ -75,41 +77,58 @@ const model = {
         },
         {
             name: 'Yoshino',
-            file: 'girl.jpg'
+            file: 'yoshino.jpg'
         },
         {
             name: 'Yumeko',
-            file: 'girl2.jpg'
+            file: 'yumeko.jpg'
         },
         {
             name: 'Emo Raphiel',
-            file: 'girl3.png'
+            file: 'raphiel.png'
         },
         {
             name: 'Reina',
-            file: 'girl4.png'
+            file: 'reina.png'
         }
     ],
     // This is just a prototype, so passwords aren't confidential
     users: [
         {
             id: 1,
-            avatar: 0,
-            username: 'Bozsi',
+            avatar: 8,
+            username: 'Andy',
             password: '123abc',
-            balance: 0
+            balance: 10000
         },
         {
             id: 2,
-            avatar: 15,
-            username: 'Invoku',
+            avatar: 12,
+            username: 'Pathom',
             password: '123abc',
-            balance: 10000
+            balance: 300
+        },
+        {
+            id: 3,
+            avatar: 16,
+            username: 'Geir',
+            password: '123abc',
+            balance: 500
+        },
+        {
+            id: 4,
+            avatar: 4,
+            username: 'Carina',
+            password: '123abc',
+            balance: 6000
         }
     ],
     // Key is user ID, array values is item ID
     inventories: {
-        1: [ 1, 1, 1 ]
+        1: [ 1, 1, 1 ],
+        2: [],
+        3: [],
+        4: []
     },
     items: [
         {
@@ -146,7 +165,7 @@ const model = {
             passwordAgain: ''
         },
         settings: {
-            username: 'Bozsi',
+            username: '',
             password: '',
             passwordAgain: '',
             addBalance: ''
