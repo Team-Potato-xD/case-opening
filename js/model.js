@@ -327,7 +327,7 @@ const model = {
             name: 'Marvel Chest',
             description: 'A marvelous chest for MCU fans',
             price: 300,
-            drops: [55, 25, 10, 6, 4],
+            drops: [ 55, 25, 10, 6, 4 ],
             items: [ 13 ]
         }
     ],

@@ -9,6 +9,7 @@ const files = [
     'js/controller/item.js',
     'js/controller/chest.js',
     'js/controller/inventory.js',
+    'js/chests/marvel.js',
     'js/view/helpers.js',
     'js/view/general.js',
     'js/view/home.js',
