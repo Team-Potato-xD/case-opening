@@ -1,26 +1,40 @@
-function createCase(name, description, price, drops) {
-    model.cases.push({
-        id: 1,
+// ID iterator
+model.iterators.chests = createIncrementableIndex(model.chests.length);
+
+function createChest(name, description, price, drops) {
+    const id = model.iterators.chests.next();
+    model.chests.push({
+        id: id,
         image: '',
         name: name,
         description: description,
         price: price,
         drops: drops,
-
+        items: []
     });
+    return id;
 }
 
-function findCase(id) {
-    const result = model.cases.filter(cases => cases.id === id);
+function findChest(id) {
+    const result = model.chests.filter(cases => cases.id === id);
     return result.length > 0 ? result[0] : null;
 }
 
-function findCaseIndex(id) {
-    return model.cases.findIndex(cases => cases.id === id);
+function findChestIndex(id) {
+    return model.chests.findIndex(cases => cases.id === id);
 }
 
-/*function editCase(caseId, itemId) {
+function estimateChestPrice(id) {
+    const chest = findChest(id);
+    let total = chest.items.reduce((sum, itemId) => {
+        const item = findItem(itemId);
+        return sum + item.price;
+    }, 0);
+    return total / chest.items.length * 0.75;
+}
 
-};
-
-*/
+function addChestItems(chestId, ...itemIds) {
+    const chest = findChest(chestId);
+    // Is spread operator allowed?
+    chest.items.push(...itemIds);
+}

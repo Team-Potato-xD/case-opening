@@ -1,5 +1,5 @@
-// Temporary id creator
-const userId = createIncrementableIndex(model.users.length);
+// ID iterator
+model.iterators.users = createIncrementableIndex(model.users.length);
 
 /*
  * Functions to find user object or their index
@@ -40,24 +40,24 @@ function createUser(username, password) {
     // Username has to be longer than 1 character
     if (username.length < 2) {
         console.error('Username has to be 2 characters or longer!');
-        return false;
+        return 0;
     }
     // Password has to be longer than 5 characters
     if (password.length < 6) {
         console.error('Password has to be 6 characters or longer!');
-        return false;
+        return 0;
     }
     // Exit if username is taken
     if (findUserByUsername(username) !== null) {
         console.error('Username is already in use!');
-        return false;
+        return 0;
     }
     // Get a new ID
-    const id = userId.next();
+    const id = model.iterators.users.next();
     // Make sure index doesn't exist to avoid dupes
     if (findUserIndexById(id) !== -1) {
         console.error('ID is already in use!');
-        return false;
+        return 0;
     }
     // Push new user to model
     model.users.push({
@@ -71,7 +71,7 @@ function createUser(username, password) {
     model.inventories[id] = [];
     // Done, return true
     console.info(`User "${username}" has been made with ID ${id}.`);
-    return true;
+    return id;
 }
 
 function changeUsername(username, id = model.app.userId) {
