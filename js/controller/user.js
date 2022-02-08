@@ -224,15 +224,26 @@ function getBalance(id = model.app.userId) {
     return user.balance;
 }
 
+function formatBalance(amount) {
+    return '$' + amount.toLocaleString();
+}
+
 function setBalance(amount, id = model.app.userId) {
     const user = findUserById(id);
     if (!user) {
         console.error('User is not signed in or does not exist!')
         return false;
     }
-    user.balance = amount;
+    user.balance = parseInt(amount);
     console.info(`Set balance $${amount} for "${user.username}".`);
     return true;
+}
+
+function doAddBalance() {
+    if (!isSignedIn() || !model.inputs.settings.addBalance) return;
+    if (!addBalance(model.inputs.settings.addBalance)) return;
+    model.inputs.settings.addBalance = '';
+    render();
 }
 
 function addBalance(amount, id = model.app.userId) {
@@ -241,7 +252,7 @@ function addBalance(amount, id = model.app.userId) {
         console.error('User is not signed in or does not exist!')
         return false;
     }
-    user.balance += amount;
+    user.balance += parseInt(amount);
     console.info(`Added balance $${amount} to "${user.username}".`);
     return true;
 }
@@ -252,7 +263,7 @@ function subBalance(amount, id = model.app.userId) {
         console.error('User is not signed in or does not exist!')
         return false;
     }
-    user.balance -= amount;
+    user.balance -= parseInt(amount);
     console.info(`Removed balance $${amount} from "${user.username}".`);
     return true;
 }

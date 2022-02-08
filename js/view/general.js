@@ -22,8 +22,8 @@ function getAuthNavigation() {
         let user = getCurrentUser();
         return /*HTML*/`
         <ul>
-            <li onclick="goTo('avatars')">${getAvatar(user.avatar, 40)}</li>
-            <li>${user.username}</li>
+            <li class="balance" onclick="goTo('settings')">${formatBalance(user.balance)}</li>
+            <li onclick="goTo('settings')">${getAvatar(user.avatar, 40)}</li>
         </ul>
         `;
     }

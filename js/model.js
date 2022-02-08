@@ -2,7 +2,7 @@ const model = {
     name: 'Chest Site',
     shortName: 'CS',
     app: {
-        page: 'home',
+        page: 'settings',
         // If userId is a falsey value (0, null, etc), we're signed out
         userId: 0,
         /*
@@ -14,7 +14,7 @@ const model = {
     },
     // Contains a bunch of image uris
     images: {
-        shungite: 'shungite.gif'
+        paymentOptions: 'assets/payment-options.png'
     },
     // Avatars, use index in user
     avatarPath: 'assets/avatars',

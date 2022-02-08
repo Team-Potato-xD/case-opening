@@ -10,6 +10,7 @@
 
 textarea,
 input[type="text"],
+input[type="number"],
 input[type="password"],
 button,
 .btn {
@@ -22,6 +23,7 @@ button,
 /* Form inputs */
 
 input[type="text"],
+input[type="number"],
 input[type="password"] {
   opacity: 0.9;
   background-color: var(--light-gray);
@@ -31,6 +33,7 @@ input[type="password"] {
 }
 
 input[type="text"]:focus,
+input[type="number"]:focus,
 input[type="password"]:focus {
   opacity: 1;
   background-color: white;
@@ -38,12 +41,14 @@ input[type="password"]:focus {
 }
 
 input[type="text"]::placeholder,
+input[type="number"]::placeholder,
 input[type="password"]::placeholder {
   color: white;
   transition: color 0.3s;
 }
 
 input[type="text"]:focus::placeholder,
+input[type="number"]:focus::placeholder,
 input[type="password"]:focus::placeholder {
   color: var(--light-gray);
 }
