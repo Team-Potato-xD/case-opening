@@ -3,6 +3,7 @@ const files = [
     'css/base.css',
     'css/form.css',
     'css/avatar.css',
+    'css/chest.css',
     'js/utility.js',
     'js/model.js',
     'js/controller/user.js',

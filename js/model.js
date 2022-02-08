@@ -2,7 +2,7 @@ const model = {
     name: 'Chest Site',
     shortName: 'CS',
     app: {
-        page: 'home',
+        page: 'chests',
         // If userId is a falsey value (0, null, etc), we're signed out
         userId: 0,
         /*

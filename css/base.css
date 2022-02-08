@@ -56,7 +56,7 @@ main.center-layout > section {
   align-items: center;
 }
 
-main.split-layout section {
+main.split-layout > section {
   display: grid;
   grid-template: 1fr / 3fr 2fr;
   grid-gap: 15px;
