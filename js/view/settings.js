@@ -7,7 +7,7 @@ views.settings = function() {
     <section>
         <article class="container panel center-text">
             <h3>Pick avatar</h3>
-            ${getAvatars(128, true)}
+            ${getAvatars(128, 2)}
         </article>
         <article class="container panel center-text">
             <h3>Add balance</h3>

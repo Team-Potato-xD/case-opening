@@ -23,7 +23,7 @@ function getAuthNavigation() {
         return /*HTML*/`
         <ul>
             <li class="balance" onclick="goTo('settings')">${formatBalance(user.balance)}</li>
-            <li onclick="goTo('settings')">${getAvatar(user.avatar, 40)}</li>
+            <li onclick="goTo('settings')">${getAvatar(user.avatar, 40, 1)}</li>
         </ul>
         `;
     }

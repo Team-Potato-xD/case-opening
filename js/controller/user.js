@@ -180,22 +180,22 @@ function signOut() {
  * Functions for handling avatars
  */
 
-function getAvatars(size = 128, selectable = false) {
+function getAvatars(size = 128, mode = 0) {
     return model.avatars.map((_, index) => {
-        return getAvatar(index, size, selectable);
+        return getAvatar(index, size, mode);
     }).join('\n');
 }
 
-function getAvatar(index = 0, size = 128, selectable = false) {
+function getAvatar(index = 0, size = 128, mode = 0) {
     let avatar = model.avatars[index];
     return /*HTML*/`
     <figure 
-        class="avatar${selectable && isSignedIn() && getCurrentUser().avatar === index ? ' current' : ''}${selectable ? ' selectable' : ''}" 
+        class="avatar${mode === 2 && isSignedIn() && getCurrentUser().avatar === index ? ' current' : ''}${mode === 2 ? ' selectable' : ''}" 
         style="--size: ${size}px" data-index="${index}" data-name="${avatar.name}"
-        ${selectable ? ` onclick="changeAvatar(${index});"` : ''}>
+        ${mode === 2 ? ` onclick="changeAvatar(${index});"` : ''}>
     <img src="${model.avatarPath}/${avatar.file}" alt="${avatar.name}">
     <figcaption>${avatar.name}</figcaption>
-    <div>${selectable ? '' : 'Change<br>Avatar'}</div>
+    ${mode !== 0 ? `<div>${mode !== 1 ? '' : 'Change<br>Avatar'}</div>` : ''}
     </figure>`;
 }
 
