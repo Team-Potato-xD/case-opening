@@ -180,22 +180,22 @@ function signOut() {
  * Functions for handling avatars
  */
 
-function getAvatars(size = 128, selectable = false) {
+function getAvatars(size = 128, mode = 0) {
     return model.avatars.map((_, index) => {
-        return getAvatar(index, size, selectable);
+        return getAvatar(index, size, mode);
     }).join('\n');
 }
 
-function getAvatar(index = 0, size = 128, selectable = false) {
+function getAvatar(index = 0, size = 128, mode = 0) {
     let avatar = model.avatars[index];
     return /*HTML*/`
     <figure 
-        class="avatar${selectable && isSignedIn() && getCurrentUser().avatar === index ? ' current' : ''}${selectable ? ' selectable' : ''}" 
+        class="avatar${mode === 2 && isSignedIn() && getCurrentUser().avatar === index ? ' current' : ''}${mode === 2 ? ' selectable' : ''}" 
         style="--size: ${size}px" data-index="${index}" data-name="${avatar.name}"
-        ${selectable ? ` onclick="changeAvatar(${index});"` : ''}>
+        ${mode === 2 ? ` onclick="changeAvatar(${index});"` : ''}>
     <img src="${model.avatarPath}/${avatar.file}" alt="${avatar.name}">
     <figcaption>${avatar.name}</figcaption>
-    <div>${selectable ? '' : 'Change<br>Avatar'}</div>
+    ${mode !== 0 ? `<div>${mode !== 1 ? '' : 'Change<br>Avatar'}</div>` : ''}
     </figure>`;
 }
 
@@ -224,15 +224,26 @@ function getBalance(id = model.app.userId) {
     return user.balance;
 }
 
+function formatBalance(amount) {
+    return '$' + amount.toLocaleString();
+}
+
 function setBalance(amount, id = model.app.userId) {
     const user = findUserById(id);
     if (!user) {
         console.error('User is not signed in or does not exist!')
         return false;
     }
-    user.balance = amount;
+    user.balance = parseInt(amount);
     console.info(`Set balance $${amount} for "${user.username}".`);
     return true;
+}
+
+function doAddBalance() {
+    if (!isSignedIn() || !model.inputs.settings.addBalance) return;
+    if (!addBalance(model.inputs.settings.addBalance)) return;
+    model.inputs.settings.addBalance = '';
+    render();
 }
 
 function addBalance(amount, id = model.app.userId) {
@@ -241,7 +252,7 @@ function addBalance(amount, id = model.app.userId) {
         console.error('User is not signed in or does not exist!')
         return false;
     }
-    user.balance += amount;
+    user.balance += parseInt(amount);
     console.info(`Added balance $${amount} to "${user.username}".`);
     return true;
 }
@@ -252,7 +263,7 @@ function subBalance(amount, id = model.app.userId) {
         console.error('User is not signed in or does not exist!')
         return false;
     }
-    user.balance -= amount;
+    user.balance -= parseInt(amount);
     console.info(`Removed balance $${amount} from "${user.username}".`);
     return true;
 }

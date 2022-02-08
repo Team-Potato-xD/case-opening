@@ -17,7 +17,7 @@ const files = [
     'js/view/inventory.js',
     'js/view/sign-in.js',
     'js/view/sign-up.js',
-    'js/view/avatars.js'
+    'js/view/settings.js'
 ];
 
 // App element

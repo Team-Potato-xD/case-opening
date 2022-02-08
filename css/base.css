@@ -50,6 +50,12 @@ main {
   grid-gap: 15px;
 }
 
+main.normal-layout > section {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
 main.center-layout > section {
   display: flex;
   justify-content: center;
@@ -75,6 +81,10 @@ main.inventory-layout > section section {
 .center-self {
   justify-self: center;
   align-self: center;
+}
+
+.center-text {
+  text-align: center;
 }
 
 /* Hide elements on different sizes */
@@ -168,6 +178,10 @@ header nav li {
   gap: 0;
 }
 
+.balance {
+  color: var(--green);
+}
+
 /* Panels */
 
 .panel {
@@ -190,4 +204,22 @@ footer {
   text-align: center;
   font-size: 0.8rem;
   padding: 5px 0;
+}
+
+/* Payments */
+
+.payment {
+  display: grid;
+  grid-template: repeat(2, auto) / auto 1fr auto;
+  align-items: center;
+  grid-gap: 5px;
+}
+
+.payment input,
+.payment img {
+  grid-column: span 2;
+}
+
+.payment img {
+  height: 2.5rem;
 }

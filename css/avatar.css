@@ -19,7 +19,6 @@
   box-shadow: 0 0 3px rgb(50, 50, 50);
   user-select: none;
   transition: transform 0.3s;
-  cursor: pointer;
 }
 
 .avatar img {
@@ -49,6 +48,7 @@
   font-size: calc(var(--size) / 8);
   text-shadow: 0 0 3px rgb(50, 50, 50);
   opacity: 0;
+  cursor: pointer;
 }
 
 .avatar:not(.selectable):hover div {
