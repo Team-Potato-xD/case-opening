@@ -12,7 +12,7 @@ views.signUp = function() {
     return /*HTML*/`
     <section>
         <article class="panel vertical-view">
-            <h3>Sign up</h3>
+            <h3><i class="material-icons">person</i> Sign up</h3>
             <input type="text" placeholder="Username" value="${model.inputs.signUp.username}" oninput="model.inputs.signUp.username = this.value;">
             <input type="password" placeholder="Password" value="${model.inputs.signUp.password}" oninput="model.inputs.signUp.password = this.value;">
             <input type="password" placeholder="Password again" value="${model.inputs.signUp.passwordAgain}" oninput="model.inputs.signUp.passwordAgain = this.value;">
