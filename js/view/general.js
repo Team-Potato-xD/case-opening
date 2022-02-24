@@ -8,7 +8,7 @@ function getHeader() {
                 <ul>
                     <li onclick="goTo('home');"><i class="material-icons">home</i><span class="hide-s-m">Home</span></li>
                     <li onclick="goTo('chests');"><i class="material-icons">shopping_cart</i><span class="hide-s-m">Chests</span></li>
-                    <li onclick="goTo('inventory');"><i class="material-icons">work</i><span class="hide-s-m">Inventory</span></li>
+                    <li onclick="model.app.inventoryId = model.app.userId; goTo('inventory');"><i class="material-icons">work</i><span class="hide-s-m">Inventory</span></li>
                 </ul>
                 ${getAuthNavigation()}
             </nav>

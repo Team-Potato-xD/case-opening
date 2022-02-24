@@ -15,7 +15,7 @@ views.settings = function() {
                 <input type="text" placeholder="Username" value="${model.inputs.settings.username}" oninput="model.inputs.settings.username = this.value;">
                 <input type="password" placeholder="Password" oninput="model.inputs.settings.password = this.value;">
                 <input type="password" placeholder="Password again" oninput="model.inputs.settings.passwordAgain = this.value;">
-                <button onclick="doUpdateUser();">Update</button>
+                <button onclick="doUpdateUser();"><i class="material-icons">save</i>Update</button>
             </div>
         </article>
         <article class="container panel center-text">
@@ -24,7 +24,7 @@ views.settings = function() {
                 <span class="balance">$</span>
                 <input type="number" placeholder="Amount to add..." value="${model.inputs.settings.addBalance}" oninput="model.inputs.settings.addBalance = this.value;">
                 <img src="${model.images.paymentOptions}" alt="payment options">
-                <button onclick="doAddBalance();">Pay</button>
+                <button onclick="doAddBalance();"><i class="material-icons">currency_exchange</i>Pay</button>
             </article>
         </article>
     </section>

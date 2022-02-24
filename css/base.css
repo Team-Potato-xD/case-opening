@@ -101,19 +101,24 @@ main.inventory-layout > section section {
   align-items: center;
 }
 
+.center-horizontal {
+  display: flex;
+  justify-content: center;
+}
+
 .center-text {
   text-align: center;
 }
 
 /* Hide elements on different sizes */
 .hide {
-  display: none;
+  display: none !important;
 }
 
 @media only screen and (max-width: 600px) {
   .hide-s,
   .hide-s-m {
-    display: none;
+    display: none !important;
   }
 }
 
@@ -121,14 +126,14 @@ main.inventory-layout > section section {
   .hide-s-m,
   .hide-m,
   .hide-m-l {
-    display: none;
+    display: none !important;
   }
 }
 
 @media only screen and (min-width: 993px) {
   .hide-m-l,
   .hide-l {
-    display: none;
+    display: none !important;
   }
 }
 
@@ -629,23 +634,23 @@ figure.item {
 
 /* Inventory item list */
 
-.item-list {
+.item-view {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 10px;
+  flex-direction: column;
 }
 
-.item-list .item {
+.item-grid {
+  display: grid;
+  grid-template: auto / repeat(5, 132px);
+  grid-auto-rows: auto;
+  grid-gap: 10px;
+  width: max-content;
+}
+
+.item-grid .item {
   width: 128px;
   height: 128px;
   margin: 0;
-}
-
-aside.panel > img {
-  max-width: 100%;
-  max-height: 30%;
 }
 
 /* Account settings */
@@ -663,4 +668,37 @@ aside.panel > img {
 
 .account-view button {
   width: max-content;
+}
+
+.current-item {
+  display: grid;
+  grid-template: repeat(3, auto) 1fr auto / 1fr;
+  grid-gap: 10px;
+}
+
+.current-item h2 {
+  text-align: center;
+}
+
+.current-item img {
+  width: 100%;
+  height: 256px;
+  object-fit: contain;
+}
+
+.current-item p {
+  padding: 5px;
+}
+
+.item-props {
+  list-style: none;
+  margin: 0;
+  padding: 5px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  display: grid;
+  width: 100%;
+  grid-template: auto / repeat(2, 1fr);
+  text-align: center;
+  background-color: var(--gray-dark2);
 }

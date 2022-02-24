@@ -16,3 +16,10 @@ function estimateValueInventory(id) {
         return sum + item.price;
     }, 0);
 }
+
+function doShowInventory() {
+    const user = findUserByUsername(model.inputs.showInventory);
+    if (!user) return;
+    model.app.inventoryId = user.id;
+    render();
+}

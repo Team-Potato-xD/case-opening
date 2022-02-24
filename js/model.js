@@ -2,7 +2,7 @@ const model = {
     appName: 'Treasury',
     appIcon: 'assets/chest-open.svg',
     app: {
-        page: 'settings',
+        page: 'home',
         // If userId is a falsey value (0, null, etc), we're signed out
         userId: 0,
         /*
@@ -103,7 +103,7 @@ const model = {
             avatar: 8,
             username: 'Andy',
             password: '123abc',
-            balance: 10000
+            balance: 0
         },
         {
             id: 2,
@@ -127,10 +127,10 @@ const model = {
             balance: 6000
         }
     ],
-    activeItem: -1,
+    activeItem: 0,
     // Key is user ID, array values is item ID
     inventories: {
-        1: [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ],
+        1: [],
         2: [],
         3: [],
         4: []
@@ -153,11 +153,12 @@ const model = {
         }
     ],
     currentChest: 0,
-    chestQueue: [ 4, 4, 4 ],
+    chestQueue: [],
     tasks: [],
     iterators: {},
     message: null,
     inputs: {
+        showInventory: '',
         buyAmount: 1,
         signIn: {
             username: '',

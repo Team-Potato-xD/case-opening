@@ -64,7 +64,7 @@ function getCurrentChest() {
             ${itemList}
         </ul>
         <div class="buy-form">
-            <button ${chest.items.length > 0 ? `onclick="buyChests();"` : 'disabled'}>Buy</button>
+            <button ${chest.items.length > 0 ? `onclick="buyChests();"` : 'disabled'}><i class="material-icons">shopping_cart_checkout</i>Buy</button>
             <input type="number" value="${model.inputs.buyAmount}" oninput="model.inputs.buyAmount = this.value;">
         </div>
     </aside>

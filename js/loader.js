@@ -36,7 +36,7 @@ function appendFiles() {
         if (index !== files.length) return append();
         console.info('Done loading files!');
         // Default sign in
-        signIn('Andy', '123abc');
+        //signIn('Andy', '123abc');
         // Run initial render
         render();
     };
