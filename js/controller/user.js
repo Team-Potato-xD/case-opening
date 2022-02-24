@@ -171,6 +171,7 @@ function signOut() {
         return false;
     }
     model.app.userId = 0;
+    model.app.page = 'home';
     model.inputs.settings.username = '';
     console.info('You have been signed out.');
     return true;
@@ -183,11 +184,12 @@ function signOut() {
 function getAvatars(size = 128, mode = 0) {
     return model.avatars.map((_, index) => {
         return getAvatar(index, size, mode);
-    }).join('\n');
+    }).join('');
 }
 
-function getAvatar(index = 0, size = 128, mode = 0) {
+function getAvatar(index = 0, size = 128, mode = 0, userId = model.app.userId) {
     let avatar = model.avatars[index];
+    if (avatar.access && !avatar.access.includes(userId)) return '';
     return /*HTML*/`
     <figure 
         class="avatar${mode === 2 && isSignedIn() && getCurrentUser().avatar === index ? ' current' : ''}${mode === 2 ? ' selectable' : ''}" 
@@ -199,16 +201,43 @@ function getAvatar(index = 0, size = 128, mode = 0) {
     </figure>`;
 }
 
-function changeAvatar(index) {
+function changeAvatar(index, userId = model.app.userId) {
     if (!isSignedIn()) {
         console.error('You have to be signed in to change avatar!');
         return false;
     }
-    getCurrentUser().avatar = index;
+    findUserById(userId).avatar = index;
     console.info(`You changed avatar to "${model.avatars[index].name}".`);
     // TEMP
     render();
     return true;
+}
+
+function findAvatarIndex(avatarName) {
+    for (let i = 0; i < model.avatars.length; i++) {
+        let avatar = model.avatars[i].name.toLowerCase();
+        if (avatar.indexOf(avatarName.toLowerCase()) > -1) return i;
+    }
+}
+
+function giveAvatarAccess(avatar, userId = model.app.userId) {
+    if (hasAvatarAccess(avatar, userId)) return;
+    model.avatars[avatar].access.push(userId);
+}
+
+function removeAvatarAccess(avatar, userId = model.app.userId) {
+    if (!model.avatars[avatar].access || !model.avatars[avatar].access.includes(userId)) return;
+    model.avatars[avatar].access.splice(model.avatars[avatar].access.indexOf(userId), 1);
+    const user = findUserById(userId);
+    if (!user) {
+        console.warn('Attempted to change avatar for a user that does not exist.');
+        return;
+    }
+    changeAvatar(0, userId);
+}
+
+function hasAvatarAccess(avatar, userId = model.app.userId) {
+    return !model.avatars[avatar].access || model.avatars[avatar].access.includes(userId);
 }
 
 /*
@@ -252,7 +281,8 @@ function addBalance(amount, id = model.app.userId) {
         console.error('User is not signed in or does not exist!')
         return false;
     }
-    user.balance += parseInt(amount);
+    amount = parseInt(amount);
+    user.balance += amount;
     console.info(`Added balance $${amount} to "${user.username}".`);
     return true;
 }
@@ -263,7 +293,12 @@ function subBalance(amount, id = model.app.userId) {
         console.error('User is not signed in or does not exist!')
         return false;
     }
-    user.balance -= parseInt(amount);
+    amount = parseInt(amount);
+    if (user.balance < amount) {
+        console.error(`Attempted to subtract more balance than available!`);
+        return false;
+    }
+    user.balance -= amount;
     console.info(`Removed balance $${amount} from "${user.username}".`);
     return true;
 }

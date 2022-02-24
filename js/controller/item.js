@@ -1,11 +1,13 @@
 // ID iterator
 model.iterators.items = createIncrementableIndex(model.items.length);
 
-function createItem(name, price, rarity, description) {
+const rarity = ['Common', 'Uncommon', 'Rare', 'Epic', 'Legendary'];
+
+function createItem(image, name, price, rarity, description) {
     const id = model.iterators.items.next();
     model.items.push({
         id: id,
-        image: '',
+        image: image,
         name: name,
         price: price,
         rarity: rarity,
@@ -17,7 +19,7 @@ function createItem(name, price, rarity, description) {
 function createItems(...items) {
     return items.map(item => {
         item.id = model.iterators.items.next();
-        item.image = '';
+        item.image = item.image || '';
         item.name = item.name || '';
         item.price = item.price || 0;
         item.rarity = item.rarity || 0;
