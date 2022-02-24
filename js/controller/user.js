@@ -76,6 +76,10 @@ function createUser(username, password) {
 
 function changeUsername(username, id = model.app.userId) {
     const user = findUserById(id);
+    if (username.length < 2) {
+        console.error('Username has to be at least 2 characters!');
+        return false;
+    }
     if (!user) {
         console.error('User does not exist!');
         return false;
@@ -94,6 +98,20 @@ function changePassword(password, id = model.app.userId) {
     user.password = password;
     console.info(`Password has been changed for "${user.username}".`);
     return true;
+}
+
+function doUpdateUser() {
+    changeUsername(model.inputs.settings.username);
+    if (model.inputs.settings.password) {
+        if (model.inputs.settings.password === model.inputs.settings.passwordAgain) {
+            changePassword(model.inputs.settings.password);
+        } else {
+            console.error('Passwords does not match!');
+        }
+        model.inputs.settings.password = '';
+        model.inputs.settings.passwordAgain = '';
+    }
+    render();
 }
 
 function deleteUser(id) {

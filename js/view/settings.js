@@ -10,6 +10,15 @@ views.settings = function() {
             ${getAvatars(128, 2)}
         </article>
         <article class="container panel center-text">
+            <h3>Account</h3>
+            <div class="container account-view">
+                <input type="text" placeholder="Username" value="${model.inputs.settings.username}" oninput="model.inputs.settings.username = this.value;">
+                <input type="password" placeholder="Password" oninput="model.inputs.settings.password = this.value;">
+                <input type="password" placeholder="Password again" oninput="model.inputs.settings.passwordAgain = this.value;">
+                <button onclick="doUpdateUser();">Update</button>
+            </div>
+        </article>
+        <article class="container panel center-text">
             <h3>Add balance</h3>
             <article class="payment container">
                 <span class="balance">$</span>

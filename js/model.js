@@ -2,7 +2,7 @@ const model = {
     appName: 'Treasury',
     appIcon: 'assets/chest-open.svg',
     app: {
-        page: 'opening',
+        page: 'settings',
         // If userId is a falsey value (0, null, etc), we're signed out
         userId: 0,
         /*

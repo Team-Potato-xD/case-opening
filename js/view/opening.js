@@ -48,7 +48,7 @@ views.opening = function() {
     return /*HTML*/`
     <section class="container">
         <section class="panel opening-view">
-            <h2 class="center-align span-2">Opening ${chest.name}... (${model.chestQueue.length} left)</h2>
+            <h2 class="center-align">Opening ${chest.name}... (${model.chestQueue.length} left)</h2>
             <article id="open-animation" class="background">
                 <div class="inner">
                     ${showItems(randomItems)}
